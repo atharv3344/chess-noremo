@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tagda Chess</title>
+  <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/1.0.0/chess.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-br from-gray-900 to-black text-white font-sans">
+  <div id="app" class="min-h-screen flex flex-col items-center justify-center p-4">
+    <h1 class="text-4xl font-bold mb-6 animate-pulse">♟️ Tagda Chess Platform</h1>
+    <div id="loginPanel" class="space-y-2 transition-all duration-300 ease-in-out">
+      <input type="text" id="username" placeholder="Username" class="px-4 py-2 rounded text-black w-64" />
+      <input type="password" id="password" placeholder="Password" class="px-4 py-2 rounded text-black w-64" />
+      <div class="flex space-x-2">
+        <button onclick="register()" class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded">Register</button>
+        <button onclick="login()" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded">Login</button>
+      </div>
+    </div>
+    <div id="dashboard" class="hidden mt-10 w-full max-w-4xl space-y-6">
+      <div class="flex justify-between items-center">
+        <h2 id="welcomeMsg" class="text-2xl font-semibold"></h2>
+        <div class="flex space-x-2">
+          <span id="xp" class="bg-gray-700 px-3 py-1 rounded">XP: 0</span>
+          <span id="level" class="bg-gray-700 px-3 py-1 rounded">Level: 1</span>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <button class="bg-purple-700 hover:bg-purple-800 p-4 rounded-lg shadow-xl" onclick="startVsBot()">Play vs Bot</button>
+        <button class="bg-indigo-700 hover:bg-indigo-800 p-4 rounded-lg shadow-xl" onclick="joinGame()">Play Online</button>
+        <button class="bg-yellow-600 hover:bg-yellow-700 p-4 rounded-lg shadow-xl" onclick="openPuzzle()">Puzzle Trainer</button>
+        <button class="bg-pink-600 hover:bg-pink-700 p-4 rounded-lg shadow-xl" onclick="openTournament()">Tournaments</button>
+        <button class="bg-green-700 hover:bg-green-800 p-4 rounded-lg shadow-xl" onclick="openCoach()">Coach</button>
+        <button class="bg-blue-700 hover:bg-blue-800 p-4 rounded-lg shadow-xl" onclick="openLearn()">Learn</button>
+      </div>
+    </div>
+    <div id="gameBoard" class="hidden mt-10">
+      <div id="board" class="mx-auto border-4 border-yellow-500 rounded-lg shadow-2xl"></div>
+    </div>
+  </div>
+  <script src="/client.js"></script>
+</body>
+</html>
